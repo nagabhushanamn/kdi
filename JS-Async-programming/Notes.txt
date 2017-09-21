@@ -1,0 +1,35 @@
+
+
+in .js-lang , we can execute function 2 ways
+
+ -> sync
+ -> async
+
+
+ A. sync
+
+
+ function f1(){}
+
+ function f2(){
+    f1();//...............
+ }
+ f2();
+
+ //--------------------------------------
+
+
+ B. async
+
+
+   by default ,
+   on event ,event-handler always executes async
+
+
+   also using async-APIs, we can run functions async
+
+
+    1. promise API ( ES6 )
+    2. RxJS API    ( proposal for es7/es8)
+
+    ------------------------------------------

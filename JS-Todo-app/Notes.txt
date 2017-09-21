@@ -1,0 +1,24 @@
+
+
+// Todo-app 
+---------------------------------------------
+Model:
+    todo => {id:0,title:'',completed:false}
+---------------------------------------------
+todos=[]
+---------------------------------------------
+services:
+        addTodo(title)
+        completeTodo(id)
+        deleteTodo(id)
+        editTodo(id,title)
+        clearCompleted()
+        completeAll()
+        viewAll(filter)
+            - filter ==> ALL,ACTIVE,COMPLETED
+------------------------------------------------            
+
+
+try
+
+    

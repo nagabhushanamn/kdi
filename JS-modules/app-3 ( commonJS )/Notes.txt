@@ -1,0 +1,76 @@
+
+
+
+.js development without module standards
+
+problems:
+
+ --> global naming collisions
+     =>soln: using IIFE patterns
+-->  module loading hierachy need to be managed manually in html-page with script tags
+
+
+solns :
+
+    using module standards & loaders
+
+   from third-party
+
+   --> AMD ( Async Module Definition ) spec
+   --> commonJS  
+   --> UMD
+   ...
+
+   from ECMAScript spec
+
+   --> ES6 modules
+
+
+
+
+-----------------------------------------------
+
+
+AMD spec
+
+
+to define new module
+
+ - define('mid',[dependencies],factory);
+
+to load module
+
+ - require([mid(s)],callback);
+
+
+
+implementations:
+
+    --> Require.js  ( AMD Module Loader)
+
+ ----------------------------------------------
+
+
+ commonJS module-standard
+
+  - simple approach 
+
+  --> every .js file is module by default
+  --> by default all variables/function in .js file, are private to that module.
+  --> to abstract/export any member , we shud use 'module.exports' object
+  --> to require/import any member from other modules , we shud use 'require()'
+  --> we can group related modules into packages with description file ( package.json)
+
+    Node.js already implemented this module standard
+
+      i.e Node.js's default module standard is commonJS-standard
+
+    ------------------------------------
+
+    NPM ( Node Package Manager)
+
+    --> command line tool
+    --> to publish/download js-packages from 'NPM-repository'
+
+----------------------------------------------
+

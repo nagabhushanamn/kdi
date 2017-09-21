@@ -1,0 +1,53 @@
+
+
+
+.js development without module standards
+
+problems:
+
+ --> global naming collisions
+     soln: using IIFE patterns
+-->  module loading hierachy need to be managed manually in html-page with script tags
+
+
+solns :
+
+    using module standards & loaders
+
+
+
+   from third-party
+
+   --> AMD ( Async Module Definition ) spec
+   --> commonJS  
+   --> UMD
+   ...
+
+   from ECMAScript spec
+
+   --> ES6 modules
+
+
+
+
+-----------------------------------------------
+
+
+AMD spec
+
+
+to define new module
+
+ - define('mid',[dependencies],factory);
+
+to load module
+
+ - require([mid(s)],callback);
+
+
+
+implementations:
+
+    --> Require.js  ( AMD Module Loader)
+
+ ----------------------------------------------

@@ -1,0 +1,41 @@
+
+
+.js-lang 
+
+    --> single-threaded lang , can do concurrent actions
+    --> Non Blocking IO
+
+---------------------------------------------------------
+
+
+How .js programs are running in browser-envi ?
+
+
+
+browser envi`
+
+  e.g chrome
+
+    a. javascript runtime/engine ( v8 )  ( based on ECMAScript sepc )
+
+        1. single-call-stack  ==> to execute function-calls ( contexts )
+        2. heap               ==> to keep objects
+
+
+    b. browser's Web APIs  ( based on w3c standards)
+
+        DOM , XMR , Timer , etc...
+
+    c. Event/Message/Callback queue
+
+    d. Event-Loop
+
+   -----------------------------------------------------
+
+
+     all IO operations taking care by browser APIs, 
+     we process that outcome thru event & callbacks without Blocking
+
+
+ -------------------------------------------------------
+

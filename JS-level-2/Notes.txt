@@ -1,0 +1,22 @@
+
+
+// ES6
+
+New-syntax
+------------
+
+ a. let & const keywords with block-scope
+ b. function default params
+ c. arrow function
+ d. rest & spead operators
+ e. spring interpolation
+ f. object-literal enhancements
+ g. destructuring
+ h. symbol data-type
+ i. iterators
+ j. generators ( will cover later )
+ l. for-of loop
+ k. class syntax
+
+ ---------------------------------------
+ 
