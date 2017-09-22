@@ -1,0 +1,93 @@
+
+
+what .js can do on HTML-page in browser-envi ?
+
+ using browser provided web-APIs, can do any dynamic activity on page
+
+ provided web-APIs ( based on w3c recommendations )
+
+    e.g DOM, XHR , Timer ,.....
+
+    all browser APIs implemented & abstracted to us as .js objects & func
+
+
+ using DOM
+ -----------
+ -> can create,retreive,update.delete HTML elements
+ -> can change element's text/html content
+ -> can change element's attributes
+ -> can change element's style
+ -> can listen events on elements
+ -> can validate form-fields
+ -> can create rich UI-components
+ -> ...........
+
+ using XHR
+ ----------
+ -> can communicate with server-side async , update resp on current page ( AJAX )
+
+ using Timer API
+ -------------------
+ -> can do any timer action
+
+
+HTML5 APIs
+-------------------
+
+ref : https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5
+
+
+
+-------------------------------------
+
+
+
+
+complexities/limitations of plan-js with browser-APIs
+-------------------------------------------
+
+
+ --> browser compatibility
+ --> performance issues ( i.e DOM query,add,delete operations )
+ --> memory issues ( i.e cleaning un-used DOM elements , un-registering event-listers..)
+ --> data-binding  is manual
+ --> very difficut to organize the code ( View   | Model )
+ --> too much code for simple operatations
+
+ soln: 
+ 
+ ==> using third-party .js libraries and F.Ws
+
+
+    a. jQuery
+
+       adv : makes DOM related work easier
+
+
+MVC/MVVM based .js-lib & f.ws
+
+
+    a. knockout js 
+    b. backbone , Marionet
+    c. Yui
+    d. AngularJs   : from google-team
+    e. Emberjs
+    ......
+
+
+UI componenet based F.Ws..
+
+    a. DOJO
+    b. Ext-JS from sencha  - commericial
+
+
+component based arch  - UI
+
+    a. Reactjs  - from facebook
+    b. Angular 
+    c. Polymer.js
+    d. Vue
+
+
+
+
