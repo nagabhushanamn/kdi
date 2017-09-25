@@ -1,0 +1,71 @@
+
+-----------------------------------------
+
+1. install Angular to web-page
+2. create NG module
+3. create NG-application using module
+
+-----------------------------------------
+
+ a. MVC ( Model View Controller )  or MVVM ( Model View ViewModel) ==> MV*
+ b. declarative proramming with 'directives'
+ c. filters
+ d. custom filters   
+------------------------------------------
+
+a. NG - scopes & 2-way data-binding
+
+------------------------------------------
+
+
+
+
+
+data-binding : 2-way data-binding
+----------------------------------
+
+reading/writing model data from/to HTML-template(view)
+when model property is dirty.
+
+
+how NG doing 2-way data-binding ?
+
+on compilation phase,
+
+  for each model/scope property, NG will register 'watcher' expression
+
+  watcher ==> read/write data from DOM , when model is dirty.
+
+  all watchers are executed by 'digest-loop'
+
+  we can also, register 'custom-watchers' 
+
+
+------------------------------------------
+
+ NG keeps form/formField in following states
+
+
+  - untouched
+  - touched
+
+  - pristine
+  - dirty
+
+  - invalid
+  - valid
+
+
+-----------------------------------------------
+
+How to validate form fields ?
+
+-> HTML5 validation attrubutes
+-> using Validation directives
+-> using third-party validation modules
+
+----------------------------------------------- 
+
+
+
+

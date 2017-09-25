@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css/style.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="page-header">NG- Form - handling</div>
+        <div ng-app="demo">
+            <div class="col-sm-6 col-md-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading"> Customer Form </div>
+                    <div class="panel-body">
+                        <form novalidate ng-controller="CustomerFormController" ng-submit="saveCustomer()" name="myCustomerForm">
+                            <div class="form-group" ng-class="{'has-error':myCustomerForm.custName.$invalid && myCustomerForm.custName.$touched}">
+                                <label> Name </label>
+                                <input class="form-control" autofocus required minlength="3" name="custName" ng-model="customerForm.name" />
+                                <div class="help-block" ng-if="myCustomerForm.custName.$invalid && myCustomerForm.custName.$touched">
+                                    <span ng-if="myCustomerForm.custName.$error.required">Customer-Name is Required</span>
+                                    <span ng-if="myCustomerForm.custName.$error.minlength"> > 3 char</span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label> Email </label>
+                                <input type="email" required class="form-control" name='custEmail' ng-model="customerForm.email" />
+                            </div>
+                            <button class="btn btn-default" type="button" ng-click="loadCustomer()">Load</button>
+                            <button class="btn btn-primary">submit</button>
+                            <hr/>
+
+                            <pre>
+                                {{myCustomerForm|json}}
+                            </pre>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="./angular-1.6.6/angular.js"></script>
+    <script>
+        let mod = angular.module('demo', []);
+        mod.controller('CustomerFormController', function ($scope) {
+            $scope.customerForm = {
+                name: '',
+                email: ''
+            };
+            $scope.saveCustomer = function () {
+                if ($scope.myCustomerForm.$valid) {
+                    console.log('saving customer...');
+                    console.log($scope.customerForm);
+                } else {
+                    console.log('invalid form data');
+                }
+            }
+            $scope.loadCustomer = function () {
+                $scope.customerForm = {
+                    name: 'Nag',
+                    email: 'Nag@email.com'
+                };
+            }
+        });
+    </script>
+
+</body>
+
+</html>

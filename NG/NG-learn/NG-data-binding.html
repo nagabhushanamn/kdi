@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css/style.css" rel="stylesheet">
+    <style>
+        .ng-scope {
+            border: 1px solid red;
+            padding: 5px;
+            margin: 5px;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="page-header">NG-data-binding</div>
+    </div>
+
+    <div ng-app="demo">
+        compName : {{name}}
+        <hr/>
+        <div class="well" ng-controller="UserController">
+            Name: <input ng-model="name" />
+            <hr/>
+            <button class="btn btn-primary" ng-click="loadName()"> Load - (ng-click)</button>
+            <button class="btn btn-primary" onclick="loadName()"> Load - (on-click)</button>
+            <button class="btn btn-danger" ng-click="resetName()"> Reset </button>
+            <hr/> Hello <span>{{name}}</span>
+        </div>
+
+    </div>
+
+
+    <script src="./angular-1.6.6/angular.js"></script>
+    <script>
+        let mod = angular.module('demo', []);
+        mod.controller('UserController', function ($scope, $rootScope) {
+            $scope.name = "";
+            $scope.loadName = function () {
+                console.log('loading name');
+                $scope.name = "Nag";
+                $rootScope.name = "KDI";
+            }
+            window.loadName = function () {
+                console.log('loading name');
+                $scope.name = "Anand";
+                $rootScope.name = "KDI";
+                $scope.$apply(); // trigger digest-loop
+                // $scope.$digest(); // trigger digest-loop for current & child scopes
+            }
+            $scope.resetName = function () {
+                $scope.name = "";
+            }
+            $scope.$watch('name', function (newName, oldName) {
+                console.log('custom watcher exe.. by digest-loop');
+                console.log(newName);
+                console.log(oldName);
+            });
+        });
+    </script>
+
+</body>
+
+</html>

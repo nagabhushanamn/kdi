@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css/style.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="page-header">NG-data-binding</div>
+        <div ng-app="demo">
+            <div ng-controller="UserController">
+            <select ng-model="userCount" 
+                    ng-options="n for n in [5,10,15,20]">
+            </select>
+            <input ng-model="userCount"/>
+            <table class="table table-bordered">
+                <tr ng-repeat="user in users">
+                    <td>{{user.fname}}</td>
+                    <td>{{user.lname}}</td>
+                </tr>
+            </table>
+            </div>
+        </div>
+
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.20/angular.js"></script>
+    <script>
+        let mod = angular.module('demo', []);
+        mod.controller('UserController', function ($scope, $http, $rootScope) {
+            $scope.userCount = 5;
+            $scope.$watch('userCount', function (newCount, oldCount) {
+                loadUsers(newCount);
+            });
+            function loadUsers(count) {
+                $http.jsonp(`http://www.filltext.com/?callback=JSON_CALLBACK&rows=${count}&fname={firstName}&lname={lastName}`)
+                    .success(function (data) {
+                        $scope.users = data
+                    })
+            }
+        });
+    </script>
+
+</body>
+
+</html>

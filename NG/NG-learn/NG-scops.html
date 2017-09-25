@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css/style.css" rel="stylesheet">
+    <style>
+        .ng-scope {
+            border: 1px solid red;
+            padding: 5px;
+            margin: 5px;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="page-header">NG-scope</div>
+    </div>
+
+    <div ng-app="demo">
+        <button class="btn btn-danger" ng-click="changeToVegMenu()">change to veg</button>
+        <hr/>
+        <span class="badge">{{menu}}</span>
+
+        <hr/>
+
+        <div ng-controller="MenuController">
+            <button class="btn btn-danger" ng-click="changeToVegMenu()">change to ??</button>
+            <hr/>
+            <span class="badge">{{menu}}</span>
+            <div ng-controller="UserController">
+                <span class="badge">{{name}}</span> -
+                <span class="badge">{{menu}}</span>
+                <hr/>
+                <button class="btn btn-danger" ng-click="changeToVegMenu()">change to ??</button>
+            </div>
+        </div>
+        <div ng-controller="MenuController">
+            <button class="btn btn-danger" ng-click="changeToVegMenu()">change to ??</button>
+            <hr/>
+            <span class="badge">{{menu}}</span>
+        </div>
+
+    </div>
+
+
+    <script src="./angular-1.6.6/angular.js"></script>
+    <script>
+        let mod = angular.module('demo', []);
+        mod.run(function ($rootScope) {
+            console.log('module init....');
+            $rootScope.menu = "biryani";
+            $rootScope.changeToVegMenu = function () {
+                console.log('changing to veg');
+                $rootScope.menu = "veg-biryani";
+            }
+            $rootScope.$on('change-menu', function (event, data) {
+                console.log(event);
+                console.log(data);
+                $rootScope.menu = data.menu;
+            });
+        });
+
+        mod.controller('MenuController', function ($scope) {
+            console.log('MenuController instance created...');
+            $scope.menu = "dosa";
+            $scope.changeToVegMenu = function () {
+                console.log('changing to veg');
+                $scope.menu = "masala-dosa";
+            }
+            $scope.$on('change-menu', function (event, data) {
+                console.log(event);
+                console.log(data);
+                event.stopPropagation();
+                $scope.menu = data.menu;
+            });
+        });
+        mod.controller('UserController', function ($scope) {
+            console.log('UserController instance created...');
+            $scope.name = "Nag";
+            $scope.changeToVegMenu = function () {
+                console.log('changing to ??');
+                //$scope.$parent.$parent.menu = "veg item";
+                //$scope.$emit('change-menu', { menu: 'Veg-Item' });
+                //$scope.$broadcast('change-menu', { menu: 'Veg-Item' });
+            }
+        });
+    </script>
+
+</body>
+
+</html>

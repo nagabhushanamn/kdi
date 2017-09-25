@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css/style.css" rel="stylesheet">
+</head>
+
+<body ng-app="shop">
+
+    <div class="container">
+        <div class="page-header">shopIT</div>
+        <div ng-controller="ShopController as sc" class="list-group">
+            <!-- View -->
+            <div ng-hide="product.notAvailable" 
+                 ng-repeat="product in products | limitTo:10 | orderBy:'price'"
+                 class="list-group-item">
+                 <div class="row">
+                     <div class="col-xs-3 col-sm-3 col-md-3">
+                         <img ng-src="{{product.image}}" class="img-responsive"/>
+                     </div>
+                     <div  class="col-xs-9 col-sm-9 col-md-9">
+                        <span class="badge">{{$index+1}}</span> 
+                        <h4>{{product.name|uppercase}} <small>{{product.makeDate|date:'yyyy'}}</small> </h4>
+                        <h5>{{product.price|priceDiscount:product.discount|currency:'&#8377;':1}}</h5>
+                        <button ng-show="product.canBuy" class="btn btn-primary btn-sm">buy</button>
+                        <!--<pre>{{product|json}}</pre>-->
+                        <hr/>
+                        <section ng-controller="TabsController">
+                            <ul class="nav nav-tabs">
+                                <li ng-class="{active:isTabSelected(1)}"><a href ng-click="changeTab(1)">Description</a></li>
+                                <li ng-class="{active:isTabSelected(2)}"><a href ng-click="changeTab(2)">Specification</a></li>
+                                <li ng-class="{active:isTabSelected(3)}"><a href ng-click="changeTab(3)">Reviews</a></li>
+                            </ul>
+                            <div ng-if="isTabSelected(1)" class="panel"> <p>{{product.description}}</p></div>
+                            <div ng-if="isTabSelected(2)" class="panel">Not Yet</div>
+                            <div ng-if="isTabSelected(3)" class="panel">
+                                <div class="alert alert-danger" ng-repeat="review in product.reviews">
+                                    <span>{{review.stars}}</span> &mdash; {{review.author}}
+                                    <hr/>
+                                    <p>{{review.comment}}</p>
+                                </div>
+                                <hr/>
+                                <div class="col-sm-8 col-md-8">
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading"> Review-Form </div>
+                                        <div class="panel-body">
+                                            <form novalidate  name="reviewForm">
+                                                <div class="form-group" >
+                                                    <label> stars </label>
+                                                    <select class="form-control"></select>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label> author </label>
+                                                    <input type="email" required class="form-control" name='author' ng-model="customerForm.email" />
+                                                </div>
+                                                 <div class="form-group">
+                                                    <label> comment </label>
+                                                    <textarea class="form-control"></textarea>
+                                                </div>
+                                                <button class="btn btn-primary">submit</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                     </div>
+                 </div>    
+            </div>
+        </div>
+    </div>
+
+    <script src="./angular-1.6.6/angular.js"></script>
+    <script src="./app.js"></script>
+
+</body>
+
+</html>

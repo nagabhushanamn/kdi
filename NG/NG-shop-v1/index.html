@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css/style.css" rel="stylesheet">
+</head>
+
+<body ng-app="shop">
+
+    <div class="container">
+        <div class="page-header">shopIT</div>
+        <div ng-controller="ShopController as sc" class="list-group">
+            <!-- View -->
+            <div ng-hide="product.notAvailable" 
+                 ng-repeat="product in products | limitTo:10 | orderBy:'price'"
+                 class="list-group-item">
+                 <div class="row">
+                     <div class="col-xs-3 col-sm-3 col-md-3">
+                         <img ng-src="{{product.image}}" class="img-responsive"/>
+                     </div>
+                     <div  class="col-xs-9 col-sm-9 col-md-9">
+                        <span class="badge">{{$index+1}}</span> 
+                        <h4>{{product.name|uppercase}} <small>{{product.makeDate|date:'yyyy'}}</small> </h4>
+                        <h5>{{product.price|priceDiscount:product.discount|currency:'&#8377;':1}}</h5>
+                        <button ng-show="product.canBuy" class="btn btn-primary btn-sm">buy</button>
+                        <!--<pre>{{product|json}}</pre>-->
+                        <hr/>
+                        <section ng-init="tab=1">
+                            <ul class="nav nav-tabs">
+                                <li ng-class="{active:tab===1}"><a href ng-click="tab=1">Description</a></li>
+                                <li ng-class="{active:tab===2}"><a href ng-click="tab=2">Specification</a></li>
+                                <li ng-class="{active:tab===3}"><a href ng-click="tab=3">Reviews</a></li>
+                            </ul>
+                            <div ng-show="tab===1" class="panel"> <p>{{product.description}}</p></div>
+                            <div ng-show="tab===2" class="panel">Not Yet</div>
+                            <div ng-show="tab===3" class="panel">None Yet</div>
+                            {{tab}}
+                        </section>
+                     </div>
+                 </div>    
+            </div>
+        </div>
+    </div>
+
+    <script src="./angular-1.6.6/angular.js"></script>
+    <script src="./app.js"></script>
+
+</body>
+
+</html>
