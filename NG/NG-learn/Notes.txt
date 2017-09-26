@@ -68,4 +68,11 @@ How to validate form fields ?
 
 
 
+ NG - directives
+
+   --> custom attribute/element to HTML,
+       to bring .js data/behav with declarative-syntax
+
+ 
+ why we need directive ?
 

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css/style.css" rel="stylesheet">
+</head>
+
+<body ng-app="shop">
+
+    <div class="container">
+        <div class="page-header">shopIT</div>
+        <div ng-controller="ShopController as sc" class="list-group">
+            <!-- View -->
+            <div ng-hide="product.notAvailable" 
+                 ng-repeat="product in products | limitTo:10 | orderBy:'price'"
+                 class="list-group-item">
+                 <div class="row">
+                     <div class="col-xs-3 col-sm-3 col-md-3">
+                         <img ng-src="{{product.image}}" class="img-responsive"/>
+                     </div>
+                     <div  class="col-xs-9 col-sm-9 col-md-9">
+                        <product-title></product-title>
+                        <!--<pre>{{product|json}}</pre>-->
+                        <hr/>
+                        <product-tabs></product-tabs>
+                     </div>
+                 </div>    
+            </div>
+        </div>
+    </div>
+
+    <script src="./angular-1.6.6/angular.js"></script>
+    <script src="./app.js"></script>
+
+</body>
+
+</html>

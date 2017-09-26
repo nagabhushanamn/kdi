@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css/style.css" rel="stylesheet">
+    <style>
+        .ng-scope,.ng-isolate-scope {
+            border: 1px solid red;
+            padding: 10px;
+            margin: 10px;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="page-header">NG- directive scope : Ex1 ( in scope )</div>
+        <div ng-app="demo">
+
+            <div ng-controller="ColorController">
+                <input ng-model="color" />
+                <hr/>
+                <div my-hello-world my-color="color"></div>
+                <div my-hello-world my-color="color"></div>
+            </div>
+
+        </div>
+    </div>
+    <script src="./bower_components/jquery/dist/jquery.js"></script>
+    <script src="./angular-1.6.6/angular.js"></script>
+    <script>
+        let mod = angular.module('demo', []);
+
+        mod.controller('ColorController', function ($scope) {
+            $scope.color = "yellow";
+        });
+
+        mod.directive('myHelloWorld', function () {
+            return {
+                restrict: 'AEC',
+                //replace: true,
+                scope: {
+                    //color:'@myColor', // 1-way
+                    color:'=myColor' // 2-way
+                },
+                templateUrl: './templates/hello-world.html',
+                link: function (scope, ele, attrs) {
+
+                    // Post actions
+
+                    // console.log('post-link..');
+                    // console.log(scope.color);
+                    // scope.color="grey";
+
+                    ele.on('mouseover', function () {
+                        ele.css('cursor', 'pointer');
+                    });
+                    ele.on('click',function(){
+                        console.log('changing scope..');
+                        //ele.find('div.well').css('background-color', '#def');
+                        scope.color="#def";
+                        scope.$apply();
+                    });
+
+                    // if(attrs.myColor){
+                    //     scope.color=attrs.myColor;
+                    // }
+
+                }
+            };
+        });
+    </script>
+
+</body>
+
+</html>

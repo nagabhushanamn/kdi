@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css/style.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="page-header">NG- directive basics</div>
+        <div ng-app="demo">
+
+            <div my-hello-world></div>
+            <hr/>
+            <my-hello-world></my-hello-world>
+            <hr/>
+            <div class="my-hello-world"></div>
+
+
+
+        </div>
+    </div>
+    <script src="./angular-1.6.6/angular.js"></script>
+    <script>
+        let mod = angular.module('demo', []);
+        mod.directive('myHelloWorld', function () {
+            return {
+                restrict: 'AEC',
+                replace: true,
+                //template: '<h3> Angular World </h3>',
+                templateUrl: './templates/hello-world.html'
+            };
+        });
+    </script>
+
+</body>
+
+</html>
