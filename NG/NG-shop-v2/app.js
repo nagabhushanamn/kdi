@@ -16,9 +16,9 @@ let items = [
         notAvailable: false,
         makeDate: Date.now(),
         image: 'images/Laptop.png',
-        reviews:[
-            {stars:5,author:'nag@gmail.com',comment:'good one'},
-            {stars:3,author:'indu@gmail.com',comment:'costly one'}
+        reviews: [
+            { stars: 5, author: 'nag@gmail.com', comment: 'good one' },
+            { stars: 3, author: 'indu@gmail.com', comment: 'costly one' }
         ]
     },
     {
@@ -29,9 +29,9 @@ let items = [
         notAvailable: false,
         makeDate: Date.now(),
         image: 'images/Mobile.png',
-        reviews:[
-            {stars:5,author:'nag@gmail.com',comment:'good one'},
-            {stars:3,author:'indu@gmail.com',comment:'costly one'}
+        reviews: [
+            { stars: 5, author: 'nag@gmail.com', comment: 'good one' },
+            { stars: 3, author: 'indu@gmail.com', comment: 'costly one' }
         ]
     }
 ];
@@ -52,7 +52,22 @@ mod.controller('TabsController', function ($scope) {
         return $scope.tab === tabIdx;
     }
 });
-
+mod.controller('ReviewsController', function ($scope) {
+    $scope.isReviewFormOpen = false;
+    $scope.newReview = {
+        stars:5,
+        author:'',
+        comment:''
+    };
+    $scope.toggleReviewForm = function () {
+        $scope.isReviewFormOpen = !$scope.isReviewFormOpen;
+    }
+    $scope.submitNewReview = function (product) {
+        //..send to server-side with prduct identity
+        product.reviews.push($scope.newReview);
+        $scope.isReviewFormOpen = false;
+    }
+});
 
 //--------------------------------------------
 
