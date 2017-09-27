@@ -16,11 +16,15 @@
     </div>
     <div ng-if="isTabSelected(3)" class="panel panel-default">
         <div class="panel-body">
-            <div class="alert alert-danger" ng-repeat="review in product.reviews">
-                <span>{{review.stars}}</span> &mdash; {{review.author}}
-                <hr/>
-                <p>{{review.comment}}</p>
+
+            <div class="col-xs-8 col-sm-8 col-md-8">
+                <div class="alert alert-danger" ng-repeat="review in product.reviews">
+                    <span>{{review.stars}}</span> &mdash; {{review.author}}
+                    <hr/>
+                    <p>{{review.comment}}</p>
+                </div>
             </div>
+
             <product-review-form></product-review-form>
         </div>
     </div>

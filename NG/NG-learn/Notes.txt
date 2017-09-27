@@ -76,3 +76,22 @@ How to validate form fields ?
  
  why we need directive ?
 
+  -> for declarative programming
+
+-------------------------------------
+
+
+- Controller
+- Directives
+- Filters
+
+- services
+
+   --> contains shared data/logic 
+
+
+
+   how to create NG-services ?
+
+  ==> provider with factory-method(.$get()) 
+      will provide service instance

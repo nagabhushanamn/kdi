@@ -1,0 +1,23 @@
+
+-----------------------------------------
+
+1. install Angular to web-page
+2. create NG module
+3. create NG-application using module
+
+-----------------------------------------
+
+- MVC ( Model View Controller )  or MVVM ( Model View ViewModel) ==> MV*
+- declarative proramming with 'directives'
+- filters
+- custom filters   
+------------------------------------------
+- NG - scopes & 2-way data-binding
+
+-------------------------------------------
+- NG - Form Handling
+
+
+
+
+

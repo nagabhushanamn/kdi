@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css/style.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="page-header">NG-services</div>
+
+        <div ng-app="demo">
+
+            <div class="well" ng-controller="HitController">
+                <button class="btn btn-primary" ng-click="doHit()">Hit-1</button>
+                <span class="badge">{{count}}</span>
+            </div>
+            <div class="well" ng-controller="HitController">
+                <button class="btn btn-primary" ng-click="doHit()">Hit-2</button>
+                <span class="badge">{{count}}</span>
+            </div>
+            <div class="well" ng-controller="KickController">
+                <button class="btn btn-primary" ng-click="doKick()">KIck-1</button>
+                <span class="badge">{{count}}</span>
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="./angular-1.6.6/angular.js"></script>
+    <script>
+        let mod = angular.module('demo', []);
+
+        mod.config(function (countServiceProvider) {
+            console.log('module config-phase');
+            //countServiceProvider.setInitialCount(100);
+        });
+
+        mod.run(function (countService) {
+            console.log('module run-phase');
+            console.log(countService.getCount());
+        });
+
+        mod.controller('HitController', function (countService, $scope) {
+            console.log('HitController instance created...');
+            $scope.count = countService.getCount();
+            $scope.doHit = function () {
+                countService.doCount();
+                $scope.count = countService.getCount();
+            }
+        });
+        mod.controller('KickController', function ($scope, countService) {
+            console.log('KickController instance created...');
+            $scope.count = countService.getCount();
+            $scope.doKick = function () {
+                countService.doCount();
+                $scope.count = countService.getCount();
+            }
+        });
+
+        // mod.provider('countService', function () {
+        //     console.log('countServiceProvider instance created..');
+        //     this.count = 0;
+        //     this.setInitialCount = function (count) {
+        //         this.count = count;
+        //     }
+        //     this.$get = function () {
+        //         console.log('countServiceProvider factory-method invoked....');
+        //         let self = this;
+        //         let service = {
+        //             getCount: function () {
+        //                 return self.count;
+        //             },
+        //             doCount: function () {
+        //                 self.count++;
+        //             }
+        //         };
+        //         return service;
+        //     }
+        // });
+
+        // shortcut -1
+        // mod.factory('countService', function () {
+        //     let count = 0;
+        //     let service = {
+        //         getCount: function () {
+        //             return count;
+        //         },
+        //         doCount: function () {
+        //             count++;
+        //         }
+        //     };
+        //     return service;
+        // });
+
+        // shortcut -1    
+        class CounterService {
+            constructor() {
+                this.count = 10;
+            }
+            doCount() {
+                this.count += 1;
+            }
+            getCount() {
+                return this.count;
+            }
+        }
+
+        // mod.factory('countService', function () {
+        //     let service = new CounterService();
+        //     return service;
+        // });
+        
+        // or
+
+        // mod.service('countService',CounterService);   
+
+
+
+        // #3
+
+        let serv={
+            count:0,
+            doCount:function(){
+                this.count+=1;
+            },
+            getCount:function(){
+                return this.count;
+            }
+        }; 
+
+        mod.value('countService',serv);   
+
+    </script>
+
+</body>
+
+</html>
