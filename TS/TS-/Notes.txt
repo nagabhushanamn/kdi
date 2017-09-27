@@ -1,0 +1,26 @@
+
+
+
+
+New Syntax (Typescript / Es6)
+----------------------------------------
+
+  1. let, const keywords with block-scope
+  2. function default-params  & optional params
+  3. function rest-params
+  4. spread operator
+  5. destructuring
+  6. string interpolation
+  7. obj-literal enhacements  
+  8. symbols
+  9. iterators
+  10. for-of-loop
+
+  -------------------------------------
+
+  1. OO with class
+  2. enums  
+  -------------------------------------
+
+  1. Modules
+  
