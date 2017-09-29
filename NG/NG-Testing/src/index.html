@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Super Calculator</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
+</head>
+
+<body class="container">
+
+    <div class="page-header">Super Calculator</div>
+
+    <div class="well" ng-app="calc">
+
+        <div ng-controller="CalcController">
+            <input class="input-sm" ng-model="first"/>
+            <select ng-model="operator" ng-options="o for o in ['+','-']"></select>
+            <input class="input-sm" ng-model="second"/>
+            <button id="gobutton" ng-click="doArith()">Go</button>
+            <hr/>
+            <h2>{{latest}}</h2>
+        </div>
+
+    </div>
+
+
+    <script src="../angular-1.6.6/angular.js"></script>
+    <script src="./calc.js"></script>
+
+</body>
+
+</html>

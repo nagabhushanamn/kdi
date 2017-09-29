@@ -1,0 +1,33 @@
+
+
+A. Unit-Testing
+-----------------
+
+
+super-calculator
+-----------------
+
+ module: calculator
+
+    controller : CalcController
+
+        - first
+        - operator
+        - second
+        - result
+
+        - memory
+
+           -first operator second = result
+
+--------------------------------------------
+
+
+
+A. End-To-End ( e2e )-Testing
+---------------------------------
+
+
+    -> jasmine
+
+    -> protractor  ( based on selinium )

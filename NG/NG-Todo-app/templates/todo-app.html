@@ -1,0 +1,25 @@
+<div class="panel panel-primary">
+    <div class="panel-heading">Todos - app</div>
+    <div class="panel-body">
+
+        <input class="input-lg" ng-keyup="addNewTodo($event)" size="" />
+        <hr/>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>status</th>
+                    <th>title</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="todo in todos">
+                    <td><input type="checkbox" ng-checked="todo.completed" /></td>
+                    <td>{{todo.title}}</td>
+                    <td><a href ng-click="deleteTodo(todo.id)"><span class="glyphicon glyphicon-trash"></span></a></td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+</div>

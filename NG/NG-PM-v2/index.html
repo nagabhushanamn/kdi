@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css/style.css" rel="stylesheet">
+</head>
+
+<body ng-app="pm-app">
+
+    <div class="container">
+        <div class="page-header"><a ui-sref="home">PM</a></div>
+
+        <div class="row">
+            <div class="col-xs-3 col-sm-3 col-md-3">
+                <ul class="nav nav-stacked">
+                    <li><a ui-sref="all">View-All</a></li>
+                    <li><a ui-sref="new">Add-New</a></li>
+                </ul>
+            </div>
+            <div class="col-xs-9 col-sm-9 col-md-9">
+                <ui-view></ui-view>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="./angular-1.6.6/angular.js"></script>
+    <script src="./angular-1.6.6/angular-resource.js"></script>
+    <script src="./node_modules/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="./pm-app.js"></script>
+
+</body>
+
+</html>

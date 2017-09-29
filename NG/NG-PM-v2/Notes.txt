@@ -1,0 +1,8 @@
+
+
+
+NG Routing-modules
+--------------------
+
+ a. ngRoute   :  from angular-core team
+ b. ui.router :  from third-party ( angular-ui team) -> advanced

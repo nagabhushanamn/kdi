@@ -1,0 +1,32 @@
+
+
+ developer testing
+ -------------------
+
+ - unit-testing
+ - integration-testing
+
+ -----------------------------------
+
+
+
+  Unit Testing F.W
+  ----------------
+
+    -> jasmine ( our fucus )
+    -> mocha
+    -> qunit
+    -> nunit
+    -> doh
+    -> jest  
+     ..........
+
+ -------------------------------------------    
+
+
+
+// uni-testing : ===> AAA
+
+// A --> Arrange
+// A --> Act
+// A --> Assert
