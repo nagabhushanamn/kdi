@@ -2,7 +2,7 @@
     <div class="panel-heading">Todos - app</div>
     <div class="panel-body">
 
-        <input class="input-lg" ng-keyup="addNewTodo($event)" size="" />
+        <input class="" ng-keyup="addNewTodo($event)" size="" />
         <hr/>
         <table class="table table-bordered">
             <thead>
@@ -14,7 +14,7 @@
             </thead>
             <tbody>
                 <tr ng-repeat="todo in todos">
-                    <td><input type="checkbox" ng-checked="todo.completed" /></td>
+                    <td><input ng-model="todo.completed" ng-change="toggleCompleteTodo(todo)" type="checkbox" ng-checked="todo.completed" /></td>
                     <td>{{todo.title}}</td>
                     <td><a href ng-click="deleteTodo(todo.id)"><span class="glyphicon glyphicon-trash"></span></a></td>
                 </tr>
